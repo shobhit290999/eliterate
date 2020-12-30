@@ -1,0 +1,210 @@
+
+{% load static %}
+
+<html>
+    <head>
+        <style>
+            body {
+               
+  background-image: url("{%static '/4.jpg' %}");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+ background-size: 100% 100%;
+
+}
+
+.sus{
+  
+  padding-bottom: 20px;
+  padding-top: 20px;
+  margin-right:220px;
+  padding-left: 30px;
+  margin-left:150px;
+   margin-top:60px;
+ 
+}
+
+sus.dotted{border-style: dotted;}
+
+            p{
+                color: black;
+                font-size:30;
+                font-family: sans-serif;
+            }
+            form{
+           
+                size:200px;
+                margin-top:5px;
+                margin-left: 10%;
+            }
+            #sub{
+                margin-top: 20px;;
+                background-color: green;
+                color: white;
+                padding: 10px;
+            }
+
+           email{
+                  font-size:20px;
+            
+           }
+
+
+            @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat',sans-serif;
+}
+nav{
+  background: #151515;
+  padding: 5px 40px;
+}
+nav ul{
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+nav ul li{
+  padding: 15px 0;
+  cursor: pointer;
+}
+nav ul li.items{
+  position: relative;
+  width: auto;
+  margin: 0 16px;
+  text-align: center;
+  order: 3;
+}
+nav ul li.items:after{
+  position: absolute;
+  content: '';
+  left: 0;
+  bottom: 5px;
+  height: 2px;
+  width: 100%;
+  background: #33ffff;
+  opacity: 0;
+  transition: all 0.2s linear;
+}
+nav ul li.items:hover:after{
+  opacity: 1;
+  bottom: 8px;
+}
+nav ul li.logo{
+  flex: 1;
+  color: white;
+  font-size: 23px;
+  font-weight: 600;
+  cursor: default;
+  user-select: none;
+}
+nav ul li a{
+  color: white;
+  font-size: 18px;
+  text-decoration: none;
+  transition: .4s;
+}
+nav ul li:hover a{
+  color: cyan;
+}
+nav ul li i{
+  font-size: 23px;
+}
+nav ul li.btn{
+  display: none;
+}
+nav ul li.btn.hide i:before{
+  content: '\f00d';
+}
+@media all and (max-width: 900px){
+  nav{
+    padding: 5px 30px;
+  }
+  nav ul li.items{
+    width: 100%;
+    display: none;
+  }
+  nav ul li.items.show{
+    display: block;
+  }
+  nav ul li.btn{
+    display: block;
+  }
+  nav ul li.items:hover{
+    border-radius: 5px;
+    box-shadow: inset 0 0 5px #33ffff,
+                inset 0 0 10px #66ffff;
+  }
+  nav ul li.items:hover:after{
+    opacity: 0;
+  }
+
+  .sus{
+  
+  padding-bottom: 37px;
+  padding-top: 20px;
+  margin-right:2px;
+  padding-left: 30px;
+  margin-left:-50px;
+   margin-top:60px;
+  
+}
+}
+
+
+ 
+        </style>
+
+        
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    </head>
+    <body>
+
+        <nav>
+            <ul>
+      <li class="logo">LETSBLOG</li>
+      <li class="items"><a href="/user/">Home</a></li>
+      <li class="items"><a href="/user/">About</a></li>
+      <li class="items"><a href="/user/afterlogin/">Blogs</a></li>
+      <li class="items"><a href="/user/login/">Login</a></li>
+     
+      <li class="btn"><a href="#"><i class="fas fa-bars"></i></a></li>
+      </ul>
+      </nav>
+        
+    <div class="sus">
+      <center>
+        <h1>Sign Up</h1>
+        <h1 style="color: teal;">{{error}}</h1>
+        <table>
+        <form action="/user/aftersignup/" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form.as_table}}
+            <table>
+            <input type="submit" value="SIGNUP" id="sub">
+        </form>
+        </center>
+    </div>
+    
+
+        <script>
+            $(document).ready(function(){
+              $('.btn').click(function(){
+                $('.items').toggleClass("show");
+                $('ul li').toggleClass("hide");
+              });
+            });
+          </script>  
+    </body>
+</html>
+
+
+
+
